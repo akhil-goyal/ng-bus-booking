@@ -73,10 +73,16 @@
                   <span class="input-group-text"
                     ><i class="bi bi-bus-front"></i
                   ></span>
-                  <select class="form-select">
-                    <option>Select from location</option>
+                  <select
+                    class="form-select"
+                    [(ngModel)]="searchObj.fromLocation"
+                    name="fromLocation"
+                  >
+                    <option>Traveling From</option>
                     @for (item of locations$ | async; track $index) {
-                        <option [value]="item.locationId">{{item.locationName}}</option>
+                    <option [value]="item.locationId">
+                      {{ item.locationName }}
+                    </option>
                     }
                   </select>
                 </div>
@@ -91,10 +97,16 @@
                   <span class="input-group-text"
                     ><i class="bi bi-bus-front"></i
                   ></span>
-                  <select class="form-select">
-                    <option>Select from location</option>
+                  <select
+                    class="form-select"
+                    [(ngModel)]="searchObj.toLocation"
+                    name="toLocation"
+                  >
+                    <option>Traveling To</option>
                     @for (item of locations$ | async; track $index) {
-                        <option [value]="item.locationId">{{item.locationName}}</option>
+                    <option [value]="item.locationId">
+                      {{ item.locationName }}
+                    </option>
                     }
                   </select>
                 </div>
@@ -105,15 +117,16 @@
                     ><i class="bi bi-calendar"></i
                   ></span>
                   <input
-                    type="text"
+                    type="date"
+                    [(ngModel)]="searchObj.travelDate"
                     class="form-control"
                     placeholder="Date"
-                    value="17 Aug 2024"
+                    name="travelDate"
                   />
                 </div>
               </div>
               <div class="col-md-2 text-center">
-                <button type="submit" class="btn btn-light text-danger w-100">
+                <button type="button" (click)="onSearch()" class="btn btn-light text-danger w-100">
                   SEARCH BUSES
                 </button>
               </div>
