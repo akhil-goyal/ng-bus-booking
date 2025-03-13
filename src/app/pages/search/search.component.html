@@ -193,7 +193,12 @@
                       </p>
                     </div>
                     <div class="col-md-2 text-end">
-                      <button class="btn btn-danger">VIEW SEATS</button>
+                      <button
+                        class="btn btn-danger"
+                        [routerLink]="['/booking/', item.scheduleId]"
+                      >
+                        Book Seat
+                      </button>
                     </div>
                   </div>
                 </div>

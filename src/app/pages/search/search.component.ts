@@ -3,10 +3,11 @@ import { MasterService } from '../../service/master.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-search',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
 })
@@ -30,7 +31,7 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch() {
-    const {fromLocation, toLocation, travelDate} = this.searchObj;
+    const { fromLocation, toLocation, travelDate } = this.searchObj;
     this.masterSrv
       .searchBus(fromLocation, toLocation, travelDate)
       .subscribe((res: any) => {
